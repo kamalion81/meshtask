@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${POSTGRES_URL:jdbc:postgresql://127.0.0.1:5432/mesh_task}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    name: mesh_task
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 2
+      max-lifetime: 120000
+      idle-timeout: 300000
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yml
+    contexts: default
+    enabled: true
+  jackson:
+    default-property-inclusion: always
+    serialization:
+      indent-output: true
+      write-dates-as-timestamps: false
+
+  main:
+    allow-circular-references: true
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+#jwt:
+#  jwtSecret: "your-secret-key"
+#  jwtExpirationInMs: 3600000
+
