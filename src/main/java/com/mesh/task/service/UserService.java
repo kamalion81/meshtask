@@ -63,7 +63,9 @@ public class UserService {
             responseDto.setId(userId);
 
             responseDto.setAccount(mapper.accountToDto(user.getAccount()));
-            User saved = save(mapper.dtoToUser(responseDto));
+            User userForPersist = mapper.dtoToUser(responseDto);
+            userForPersist.setPassword(user.getPassword());
+            User saved = save(userForPersist);
             return mapper.userToResponseDto(saved);
         }catch (Exception e){
             log.error(e.getMessage());

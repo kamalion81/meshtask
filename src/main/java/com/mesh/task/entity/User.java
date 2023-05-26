@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.format.annotation.*;
 import org.springframework.security.core.*;
 import org.springframework.security.core.authority.*;
 import org.springframework.security.core.userdetails.*;
@@ -29,7 +28,6 @@ public class User implements UserDetails {
     private String name;
 
     @Column(name = "date_of_birth")
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
 
     @Length(min = 8, max = 500)
